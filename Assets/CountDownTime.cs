@@ -7,6 +7,7 @@ public class CountDownTime : MonoBehaviour
 {
     public float startingHour = 0f;
     public float startingMinute = 0f;
+    public bool stopTime = false;
     float currentHour;
     float currentMinute;
     float Minute = 0.333333333f;
@@ -24,15 +25,17 @@ public class CountDownTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentMinute += Time.deltaTime / Minute;
-        if (currentMinute > 59)
-        {
-            currentMinute = 0;
-            currentHour += 1;
-        }
-        if (currentHour > 23)
-        {
-            currentHour = 0;
+        if (!stopTime) {
+            currentMinute += Time.deltaTime / Minute;
+            if (currentMinute > 59)
+            {
+                currentMinute = 0;
+                currentHour += 1;
+            }
+            if (currentHour > 23)
+            {
+                currentHour = 0;
+            }
         }
         countDownTime.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
     }
