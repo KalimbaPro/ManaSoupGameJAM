@@ -9,12 +9,10 @@ public class CountDownTime : MonoBehaviour
     public float startingMinute = 0f;
     float currentHour;
     float currentMinute;
-    float Hours = 20f;
     float Minute = 0.333333333f;
-    float timeDelay;
 
 
-    public Text countDownTime;    
+    public TextMesh countDownTime;    
 
     // Start is called before the first frame update
     void Start()
