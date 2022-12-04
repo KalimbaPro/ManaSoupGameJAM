@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 0.1f;
     [SerializeField] private float timeToMove = 2f;
     private Rigidbody2D rb;
 
@@ -21,6 +21,6 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        transform.Translate(-speed * Time.deltaTime, 0, 0);
     }
 }
