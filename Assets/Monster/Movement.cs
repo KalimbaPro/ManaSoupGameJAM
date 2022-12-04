@@ -5,9 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
     private float jumpingPower = 20f;
-    private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
