@@ -16,6 +16,11 @@ public class animStarter : MonoBehaviour
     public List<int> fearValue;
     public HealthBar fearBar;
 
+    float multiplcator = 1;
+    int lastIndex = -1;
+
+    public int inrow;
+
     void Start()
     {
 
@@ -39,7 +44,17 @@ public class animStarter : MonoBehaviour
                     animator.Play(anims[animIndex]);
                     if (tmp)
                     {
-                        StartCoroutine(animDelay(animationsForDelay[animIndex].length, fearValue[animIndex]));
+                        if (lastIndex == animIndex)
+                            multiplcator -= 0.1f;
+                        else
+                            multiplcator += 0.1f;
+
+                        if (multiplcator < 0.5f)
+                            multiplcator = 0.5f;
+                        if (multiplcator > 1.5f)
+                            multiplcator = 1.5f;
+                        lastIndex = animIndex;
+                        StartCoroutine(animDelay(animationsForDelay[animIndex].length, fearValue[animIndex] * multiplcator));
                         tmp = false;
                     }
                 }
@@ -71,8 +86,9 @@ public class animStarter : MonoBehaviour
         //}
     }
 
-    IEnumerator animDelay(float delay, int value)
+    IEnumerator animDelay(float delay, float value)
     {
+        print(value);
         animating = true;
         yield return new WaitForSeconds(delay);
         animating = false;
