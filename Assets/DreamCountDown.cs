@@ -7,7 +7,7 @@ public class DreamCountDown : MonoBehaviour
 {
     public float startingHour = 0f;
     public float startingMinute = 0f;
-    public bool stopTime = false;
+    public static bool stopTime = false;
     
     public float finalHour = 0f;
     public float finalMinute = 0f;
@@ -16,8 +16,8 @@ public class DreamCountDown : MonoBehaviour
     float currentMinute;
     float Minute = 0.333333333f;
 
-    public GameObject winText;
-    public Text countDownTime;    
+    public GameObject looseText;
+    public Text countDownTime;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class DreamCountDown : MonoBehaviour
         if (currentHour == finalHour && currentMinute >= finalMinute)
         {
             stopTime = true;
-            winText.SetActive(true);
+            looseText.SetActive(true);
         }
         if (!stopTime) {
             currentMinute += Time.deltaTime / Minute;
