@@ -39,4 +39,9 @@ public class CountDownTime : MonoBehaviour
         }
         countDownTime.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
     }
+
+    public void setState(bool state)
+    {
+        stopTime = state;
+    }
 }
