@@ -88,7 +88,6 @@ public class animStarter : MonoBehaviour
 
     IEnumerator animDelay(float delay, float value)
     {
-        print(value);
         animating = true;
         yield return new WaitForSeconds(delay);
         animating = false;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CountDownTime : MonoBehaviour
 {
@@ -43,5 +44,10 @@ public class CountDownTime : MonoBehaviour
     public void setState(bool state)
     {
         stopTime = state;
+    }
+
+    public float getCurrentHour()
+    {
+        return currentHour;
     }
 }

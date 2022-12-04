@@ -2246,10 +2246,14 @@ MonoBehaviour:
   slider: {fileID: 2080107322}
   director: {fileID: 339568301}
   objectToDesactivate:
+  - {fileID: 1545906326}
+  - {fileID: 829209888}
+  - {fileID: 339568299}
   - {fileID: 2080107319}
   timer: {fileID: 78026594}
   cam: {fileID: 519420033}
   kid: {fileID: 217000144}
+  black: {fileID: 24679593}
   decaySpeed: 2
 --- !u!114 &2080107322
 MonoBehaviour:

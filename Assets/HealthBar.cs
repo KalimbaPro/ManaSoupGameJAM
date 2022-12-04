@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -12,7 +15,11 @@ public class HealthBar : MonoBehaviour
     public moveCameraBed cam;
     public GameObject kid;
 
+    public GameObject black;
+
     public float decaySpeed;
+
+    private bool animating = false;
 
     public void SetMaxHealth(float health)
     {
@@ -30,15 +37,37 @@ public class HealthBar : MonoBehaviour
     }
     private void Update()
     {
+        if (animating)
+            return;
         if (slider.value >= slider.maxValue)
         {
-            director.Play();
+            animating = true;
+            StartCoroutine(animDelay((float)director.duration));
+
+        }
+        slider.value -= decaySpeed * Time.deltaTime;
+
+        if (timer.getCurrentHour() == 21 && slider.value >= 75)
+        {
+            print("wp");
+            SceneManager.LoadScene("DreamPhase");
+        }
+        if (timer.getCurrentHour() == 21 && slider.value < 75)
+        {
             foreach (GameObject obj in objectToDesactivate)
                 obj.SetActive(false);
-            timer.setState(true);
-            cam.setFollow(kid);
+            black.SetActive(true);
         }
 
-        slider.value -= decaySpeed * Time.deltaTime;
+    }
+
+    IEnumerator animDelay(float delay)
+    {
+        director.Play();
+        timer.setState(true);
+        cam.setFollow(kid);
+        yield return new WaitForSeconds(delay);
+        foreach (GameObject obj in objectToDesactivate)
+            obj.SetActive(false);
     }
 }
