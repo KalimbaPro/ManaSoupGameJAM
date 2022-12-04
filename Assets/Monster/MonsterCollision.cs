@@ -4,6 +4,7 @@ using System.Collections;
 public class MonsterCollision : MonoBehaviour
 {
     public GameObject looseText;
+    public GameObject winText;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,6 +17,11 @@ public class MonsterCollision : MonoBehaviour
                 DreamCountDown.stopTime = true;
                 looseText.SetActive(true);
             }
+        }
+        if (collision.gameObject.tag == "Kid")
+        {
+            DreamCountDown.stopTime = true;
+            winText.SetActive(true);
         }
     }
 }
