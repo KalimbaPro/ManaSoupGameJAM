@@ -47,12 +47,12 @@ public class HealthBar : MonoBehaviour
         }
         slider.value -= decaySpeed * Time.deltaTime;
 
-        if (timer.getCurrentHour() == 21 && slider.value >= 75)
+        if (timer.getCurrentHour() == 22 && slider.value >= 75)
         {
             print("wp");
             SceneManager.LoadScene("DreamPhase");
         }
-        if (timer.getCurrentHour() == 21 && slider.value < 75)
+        if (timer.getCurrentHour() == 22 && slider.value < 75)
         {
             foreach (GameObject obj in objectToDesactivate)
                 obj.SetActive(false);
